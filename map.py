@@ -3,8 +3,7 @@
 from random import randint
 
 
-###############################################################################
-
+# generic endings
 class Endings(object):
 
     def __init__(self):
@@ -19,8 +18,7 @@ class Endings(object):
         return self.quips[randint(0, len(self.quips)-1)]
 
 
-###############################################################################
-
+# handles all game components
 class Engine(object):
     def __init__(self):
         self.paths = {}
@@ -32,6 +30,7 @@ class Engine(object):
         return self.paths.get(direction, None)
 
 
+# base class for all scenes
 class Scene(object):
 
     def __init__(self, name, description):
@@ -166,8 +165,7 @@ the_end_winner = Scene('the end winner',
 -------------------------------------------------------------------------------
 yes you have the keys...now get outa here before they find you...
 -------------------------------------------------------------------------------
-"""
-)
+""")
 
 
 the_end_looser = Scene('the end',

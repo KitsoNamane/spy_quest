@@ -15,9 +15,16 @@
         {% if scene.name == "game over" %}
             <p><a href="{{ url_for('home_page')}}">play again</a></p>
         {% else %}
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
             <p>
                 <form action="/play" method="POST">
-                    <input type="text" name="action"> <input type="submit">
+                    <input type="text" name="action"> <input type="submit" value="action">
                 </form>
             </p>
         {% endif %}
