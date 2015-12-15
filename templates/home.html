@@ -8,9 +8,11 @@
     <link href="{{url_for('static', filename='favicon.ico')}}" rel="shortcut icon">
 </head>
 <body>
+    {% block body %}
     <div id="content">
         <h1>hello this is your homepage</h1>
         <p>click <a href="{{url_for('play')}}">here</a> to play</p>
     </div>
+    {% endblock %}
 </body>
 </html>
