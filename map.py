@@ -4,6 +4,7 @@ from random import randint
 
 
 # generic endings
+# test ssh
 class Endings(object):
 
     def __init__(self):
