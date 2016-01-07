@@ -1,0 +1,61 @@
+html {
+  margin: 0;
+  background-color: #fff; }
+  html body {
+    margin: 0; }
+
+.site-header {
+  background-color: #bbb; }
+  .site-header a {
+    text-decoration: none;
+    color: #6E9898; }
+  .site-header h1 {
+    margin: 0;
+    border-bottom: #94B3B3 solid 1.9px;
+    padding-left: 50px; }
+
+.main-nav {
+  margin: 0;
+  width: 100%;
+  height: 65px;
+  background-color: #ccc;
+  border-bottom: #049E9E solid 1.9px; }
+  .main-nav .left-nav {
+    float: left;
+    padding-left: 50px; }
+  .main-nav .right-nav {
+    float: right;
+    padding-right: 50px; }
+  .main-nav ul {
+    list-style: none;
+    display: inline; }
+    .main-nav ul li {
+      display: inline;
+      text-size: 11px; }
+      .main-nav ul li a {
+        color: #16AB68; }
+    .main-nav ul li + li {
+      padding-left: 40px; }
+
+.site-content {
+  height: 600px;
+  width: 80%;
+  margin: 0 auto;
+  background-color: #808080;
+  border: #049E9E solid 1.9px; }
+  .site-content p {
+    margin: 0; }
+
+.site-footer {
+  display: block;
+  background-color: #bbb;
+  height: 50px;
+  border-top: #94B3B3 solid 1.9px;
+  border-bottom: #049E9E solid 1.9px; }
+  .site-footer .footer-content {
+    display: block;
+    background-color: #ccc;
+    height: 250px;
+    border-bottom: #049E9E solid 1.9px; }
+
+/*# sourceMappingURL=main.css.map */
