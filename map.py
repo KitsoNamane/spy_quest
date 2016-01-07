@@ -150,18 +150,14 @@ generic_end = Scene('game over', Endings().random_death())
 
 the_end_winner = Scene('the end winner',
 """
--------------------------------------------------------------------------------
 yes you have the keys...now get outa here before they find you...
--------------------------------------------------------------------------------
 """)
 
 
 the_end_looser = Scene('the end',
 """
--------------------------------------------------------------------------------
 you don't have the keys...you go back to find them only for you to get caught
 the first instance you step inside the mansion...you are on you own!!!
--------------------------------------------------------------------------------
 """
 )
 

@@ -1,60 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
+
+<!-- a base template to build all our webpages customized to be used with jinja2 templating -->
+
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
+    <!-- If you delete this meta tag World War Z will become a reality -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> kitso.org </title>
-    <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
-    <link href="{{url_for('static', filename='favicon.ico')}}" rel="shortcut icon">
-    <!-- Custom styles for this template borrowed from bootstrap -->
-    <link href="{{url_for('static', filename='css/navbar.css')}}" rel="stylesheet">
+    <title> </title>
+    {%- block head %}
+    <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/main.css') }}">
+    {%- endblock head %}
+    <link href="favicon.ico" rel="shortcut icon">
 </head>
+
 <body>
-  <nav>
-    <div class="container">
-      <!-- Static navbar borrowed from bootstrap -->
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{url_for('home_page')}}">kitso.org</a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li><a href="#">About Me</a></li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Studio<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Action</a></li>
-                  <li><a href="#">Another action</a></li>
-                  <li><a href="#">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li class="dropdown-header">Nav header</li>
-                  <li><a href="#">Separated link</a></li>
-                  <li><a href="#">One more separated link</a></li>
+
+    <header class="site-header">
+        <a href="{{url_for('home_page')}}"><h1> kitso namane </h1></a>
+        <nav class="main-nav">
+            <ul class="left-nav">
+                <li><a href="{{url_for('home_page')}}">HOME</a></li>
+                    <li><a href="#">CAREER</a></li>
+                    <li><a href="#">STUDIO</a></li>
                 </ul>
-              </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="{{url_for('play')}}">Play Game</a></li>
-              <li><a href="../navbar-fixed-top/">Login</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-    </div>
-  </nav>
-  <div class="container"
-    {% block body %}
-      <div id="content">
-        <h1>hello this is your homepage</h1>
-        <p>click <a href="{{url_for('play')}}">here</a> to play</p>
-      </div>
-    {% endblock %}
-  </div>
+                <ul class="right-nav">
+                    <li><a href="{{url_for('play')}}">PLAY</a></li>
+                    <li><a href="#">REGISTER</a></li>
+                    <li><a href="#">LOGIN</a></li>
+                </ul>
+            {% block nav_bar %}
+            {% endblock nav_bar %}
+        </nav>
+        {% block header %}
+        {% endblock header %}
+    </header>
+
+    <main class="site-content">
+        {% block content %}
+            <!-- content for each page goes here -->
+            <p>this is the base</p>
+        {% endblock content %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer"></div>
+        {% block footer %}
+        <div class="footer-content"> &copy; 2016 </div>
+        {% endblock footer %}
+    </footer>
+
 </body>
 </html>
