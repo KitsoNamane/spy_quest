@@ -1,25 +1,27 @@
 {% extends "home.html" %}
-{% block body %}
-    <div id="content">
-        <h2>{{scene.name}}</h2>
+{%- block content %}
+    <section class="content">
+        <h2 class="scene-name">{{scene.name}}</h2>
+        <pre class="scene-description">{{scene.description}}</pre>
 
-        <pre>{{scene.description}}</pre>
         {% if scene.name == "game over" %}
             <p><a href="{{ url_for('home_page')}}">play again</a></p>
         {% else %}
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <p>{{ message }}</p>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            <p>
+            <div class="error-messages">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <div class="form-action">
                 <form action="/play" method="POST">
                     <input type="text" name="action"> <input type="submit" value="action">
                 </form>
-            </p>
+            </div>
         {% endif %}
-    </div>
-{% endblock %}
+    </section>
+{%- endblock content %}
 </html>
