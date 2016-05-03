@@ -2,28 +2,34 @@
 
 word_dict = {}
 
-word_dict['nouns'] = []
-word_dict['verbs'] = []
-word_dict['stops'] = []
-word_dict['directions'] = []
-word_dict['numbers'] = []
+word_dict['noun'] = "bear princess lounge Dinah security-room bedroom bodyguard cook kitchen study"
+word_dict['verb'] = "go eat kill run take seduce torture strangle sneak"
+word_dict['stop'] = "the in of out and to yes no"
+word_dict['direction'] = "north south east west up down left right"
+word_dict['stop'] = "the in of out and to"
 
 
-def convert_numbers(s):
-    try:
-        return int(s)
-    except ValueError:
-        return None
+def handle_unknown(s):
+    if s.isdigit():
+        return ('number', int(s))
+    else:
+        return ('error', s)
 
 def scan(sentence):
     split_sentence = []
+    sentence = sentence.split()
     for word in sentence:
         for key in word_dict:
-            if convert_numbers(word):
-                split_sentence.append((key, convert_numbers(word)))
+            found = False
+
             if word in word_dict[key]:
-                split_sentence.append((key, word_dict[key]))
-            else:
-                split_sentence.append(('error', word))
+                split_sentence.append((key, word))
+                found = True
+                break
+
+        if not found:
+            split_sentence.append(handle_unknown(word))
+
     return split_sentence
+
 

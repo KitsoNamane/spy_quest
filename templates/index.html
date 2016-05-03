@@ -1,0 +1,64 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <!-- If you delete this meta tag World War Z will become a reality -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> webdesign </title>
+    <link href="favicon.ico" rel="shortcut icon">
+    <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/normalize.css') }}">
+    {%- block head %}
+        <link rel=stylesheet type=text/css href="{{url_for('static', filename='css/main.css') }}">
+    {%- endblock head %}
+</head>
+
+<body>
+
+    <div class="site-header">
+        <nav class="main-nav">
+            <div class="logo">spy quest</div>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">CAREER</a></li>
+                <li><a href="#">STUDIO</a></li>
+                    <div class="nav-content">
+                        <div class="nav-sub">
+                            <ul>
+                                <li><a href="#" class="nav-sub-item">scrolls</a></li>
+                                <li><a href="#" class="nav-sub-item">artworks</a></li>
+                                <li><a href="#" class="nav-sub-item">hacking</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">PLAY</a></li>
+                <li><a href="#">SIGNUP</a></li>
+                <li><a href="#">SIGNIN</a></li>
+            </ul>
+            {%- block nav %}
+            {%- endblock nav %}
+        </nav>
+    </div>
+
+    <div class="site-content">
+        <main class="main-content">
+            {%- block content %}
+                <!-- content for each page goes here -->
+            {%- endblock content %}
+        </main>
+    </div>
+
+    <div class="site-footer">
+        <footer class="main-footer">
+            <div class="site-footer"></div>
+                {% block footer %}
+                    <div class="footer-content"> &copy; 2016 </div>
+                {% endblock footer %}
+        </footer>
+    </div>
+
+</body>
+
+</html>
