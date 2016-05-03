@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, session, request, url_for, flash
-from map import game_engine
+from spy_quest.game_map import game_engine
 
 # CONFIGURATION
 DEBUG = True

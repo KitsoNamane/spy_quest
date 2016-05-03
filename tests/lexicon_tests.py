@@ -13,11 +13,11 @@ def test_directions():
 
 def test_verbs():
     assert_equal(lexicon.scan("go"), [('verb', 'go')])
-    result = lexicon.scan("go eat kill run")
+    result = lexicon.scan("go seduce kill torture")
     assert_equal(result, [('verb', 'go'),
-                           ('verb', 'eat'),
+                           ('verb', 'seduce'),
                            ('verb', 'kill'),
-                           ('verb', 'run')])
+                           ('verb', 'torture')])
 
 
 def test_stops():
@@ -34,7 +34,7 @@ def test_nouns():
     result = lexicon.scan("bear princess Dinah lounge")
     assert_equal(result, [('noun', 'bear'),
                            ('noun', 'princess'),
-                           ('noun', 'Dinah'),
+                           ('noun', 'dinah'),
                            ('noun', 'lounge')])
 
 
@@ -46,11 +46,11 @@ def test_numbers():
 
 
 def test_errors():
-    assert_equal(lexicon.scan("ASDEgh"), [('error', 'ASDEgh')])
+    assert_equal(lexicon.scan("ASDEgh"), [('error', 'asdegh')])
     result = lexicon.scan("bear  princess IAS rung")
     assert_equal(result, [('noun', 'bear'),
                            ('noun', 'princess'),
-                           ('error', 'IAS'),
+                           ('error', 'ias'),
                            ('error', 'rung')])
 
 

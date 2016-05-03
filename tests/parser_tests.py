@@ -37,32 +37,32 @@ def test_skip():
 
     # tests when we have a wordlist #
 
-    #   skip the verb from wordlist
+    # skip the verb from wordlist
     assert_equal(parser.skip(word_list, "verb"), None)
     # check to if indeed we skiped the verb
     assert_not_in(('verb', 'go'), word_list)
 
-    #   skip the direction from wordlist
+    # skip the direction from wordlist
     assert_equal(parser.skip(word_list, "direction"), None)
     # check to if indeed we skiped the direction
     assert_not_in(('direction', 'north'), word_list)
 
-    #   skip the stop from wordlist
+    # skip the stop from wordlist
     assert_equal(parser.skip(word_list, "stop"), None)
     # check to if indeed we skiped stop
     assert_not_in(('stop', 'and'), word_list)
 
-    #   skip the error from wordlist
+    # skip the error from wordlist
     assert_equal(parser.skip(word_list, "error"), None)
     # check to if indeed we skiped the error
     assert_not_in(('error', 'rescue'), word_list)
 
-    #   skip the number from wordlist
+    # skip the number from wordlist
     assert_equal(parser.skip(word_list, "number"), None)
     # check to if indeed we skiped the number
     assert_not_in(('number', 5), word_list)
 
-    #   skip the noun from wordlist
+    # skip the noun from wordlist
     assert_equal(parser.skip(word_list, "noun"), None)
     # check to if indeed we skiped the noun
     assert_not_in(('noun', 'princess'), word_list)
@@ -124,11 +124,10 @@ def test_parse_sentence():
 
     # tests when we have a wordlist
     #     if first non-stop word is noun
-    print word_list
     sentence = parser.parse_sentence(word_list)
     assert_equal(sentence.subject, 'princess')
     assert_equal(sentence.verb, 'eat')
-    assert_equal(sentence.object, 'Dinah')
+    assert_equal(sentence.object, 'dinah')
 
     # tests when we have a wordlist but next word is neither a verb or noun
     quick_word = lexicon.scan("the north bear")
