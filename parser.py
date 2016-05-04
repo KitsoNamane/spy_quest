@@ -11,6 +11,10 @@ class Sentence(object):
         self.verb = verb[1]
         self.object = object[1]
 
+    def get_sentence(self):
+        self.sentence = ' '.join([self.subject, self.verb, self.object])
+        return self.sentence
+
 def peek(word_list):
     if word_list:
        word = word_list[0]

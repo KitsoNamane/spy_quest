@@ -116,18 +116,20 @@ def test_parse_sentence():
     word_list = lexicon.scan("to kill the bear the princess eat Dinah down")
 
     # tests when we have a wordlist
-    #     if first non-stop word is verb
+    # if first non-stop word is verb
     sentence = parser.parse_sentence(word_list)
     assert_equal(sentence.subject, 'player')
     assert_equal(sentence.verb, 'kill')
     assert_equal(sentence.object, 'bear')
+    assert_equal(sentence.get_sentence(), 'player kill bear')
 
     # tests when we have a wordlist
-    #     if first non-stop word is noun
+    # if first non-stop word is noun
     sentence = parser.parse_sentence(word_list)
     assert_equal(sentence.subject, 'princess')
     assert_equal(sentence.verb, 'eat')
     assert_equal(sentence.object, 'dinah')
+    assert_equal(sentence.get_sentence(), 'princess eat dinah')
 
     # tests when we have a wordlist but next word is neither a verb or noun
     quick_word = lexicon.scan("the north bear")
