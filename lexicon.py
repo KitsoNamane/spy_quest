@@ -2,10 +2,10 @@
 
 word_dict = {}
 
-word_dict['noun'] = {'bear', 'princess', 'lounge', 'dinah', 'security-room',
-                     'bedroom', 'bodyguard', 'cook', 'kitchen', 'study'}
+word_dict['noun'] = {'bear', 'princess', 'her', 'him', 'lounge', 'dinah', 'security-room',
+                     'bedroom', 'bodyguard', 'cook', 'kitchen', 'study', 'game'}
 word_dict['verb'] = {'go', 'eat', 'kill', 'run', 'take', 'seduce', 'torture',
-                     'strangle', 'sneak'}
+                     'strangle', 'sneak', 'start'}
 word_dict['stop'] = {'the', 'in', 'of', 'out', 'and', 'to', 'yes', 'no'}
 word_dict['direction'] = {'north', 'south', 'east', 'west', 'up', 'down',
                           'left', 'right'}
@@ -32,7 +32,5 @@ def scan(sentence):
             split_sentence.append(handle_unknown(word))
 
     return split_sentence
-
-print(scan("to up north"))
 
 

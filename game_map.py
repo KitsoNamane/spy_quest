@@ -1,13 +1,9 @@
 #! /usr/bin/python
 # -*- coding: utf-8 -*-
 from random import randint
-import spy_quest.parser
-
+import parser
+import lexicon
 # generic endings
-
-class MapException(Exception):
-    pass
-
 class Endings(object):
 
     def __init__(self):
@@ -26,22 +22,30 @@ class Endings(object):
 class Engine(object):
     def __init__(self):
         self.paths = {}
-        self.action_to_paths = {}
+        self.action_paths = {}
 
     def add_paths(self, paths):
         self.paths.update(paths)
 
+    def add_action_paths(self, action):
+        self.action_paths.update(action)
+
     def process_input(self, user_input):
-        return parser.parse_sentence(user_input)
+        action = lexicon.scan(user_input)
+        print(action)
+        return parser.parse_sentence(action)
 
-    def get_scene(self, user_input):
-        action = process_input(user_input)
-        if self.action_to_paths[action]:
-            get_path  = self.action_to_paths[action]
-            return self.paths.get(get_path, None)
+    def get_scene(self, get_path):
+        return self.paths.get(get_path, None)
+
+    def handle_scene(self, user_input):
+        if " " not in user_input:
+            get_path  = self.action_paths.get(user_input, "game over")
+            return get_path
         else:
-            raise MapException("you cannot do that")
-
+            action = self.process_input(user_input)
+            get_path  = self.action_paths.get(action.get_sentence(), "game over")
+            return get_path
 
 # base class for all scenes
 class Scene(object):
@@ -173,16 +177,7 @@ the first instance you step inside the mansion...you are on you own!!!
 """
 )
 
-# change these to action and final rooms key value pairs of a dictionery
-the_pit.legal_paths = ['kitchen', 'the front door', 'game over']
-the_kitchen.legal_paths = ['bedroom', 'lounge']
-the_front_door.legal_paths = ['kitchen', 'game over']
-the_bedroom.legal_paths = ['study', 'game over']
-the_lounge.legal_paths = ['study', 'bedroom']
-the_security_room.legal_paths = ['game over', 'winner', 'loose']
-the_study.legal_paths = ['security-room', 'game over']
-
-#loads the game engine with scenes
+# load the game engine with scenes
 game_engine = Engine()
 game_engine.add_paths({
 'the pit': the_pit,
@@ -197,4 +192,24 @@ game_engine.add_paths({
 'winner': the_end_winner,
 'loose': the_end_looser})
 
+# load legal paths of each scene
+the_pit.legal_paths = ['kitchen', 'the front door', 'game over']
+the_kitchen.legal_paths = ['bedroom', 'lounge']
+the_front_door.legal_paths = ['kitchen', 'game over']
+the_bedroom.legal_paths = ['study', 'game over']
+the_lounge.legal_paths = ['study', 'bedroom']
+the_security_room.legal_paths = ['game over', 'winner', 'loose']
+the_study.legal_paths = ['security-room', 'game over']
 
+# load the game engine with valid actions
+game_engine.add_action_paths({
+'cook': 'kitchen',
+'bodyguard': 'the front door',
+'player sneak back': 'kitchen',
+'player go kitchen': 'kitchen',
+'yes': 'bedroom',
+'no': 'lounge',
+'player torture her': 'study',
+'player seduce her': 'study',
+'678': 'security-room',
+'ghostWarrior': 'winner'})
