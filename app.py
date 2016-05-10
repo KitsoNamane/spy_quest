@@ -23,16 +23,16 @@ def home_page():
 def play():
     if session['scene.name'] and request.method == 'POST':
         previous_scene = game_engine.get_scene(session['scene.name'])
-        print("%s" % request.form['action'])
-        session['scene.name'] = game_engine.handle_scene(request.form['action'])
-        if session['scene.name'] not in previous_scene.legal_paths:
+        session_name = game_engine.handle_scene(request.form['action'])
+        if session_name not in previous_scene.legal_paths:
             flash("you cant go there from this scene, try again.......")
+            session['scene.name'] = session['scene.name']
             return redirect(url_for('play'))
         else:
+            session['scene.name'] = session_name
             return redirect(url_for('play'))
-    scene = game_engine.get_scene(session['scene.name'])
-    return render_template('play.html', scene=scene)
-
+    current_scene = game_engine.get_scene(session['scene.name'])
+    return render_template('play.html', scene=current_scene)
 
 if __name__ == "__main__":
     app.run()

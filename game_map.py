@@ -3,6 +3,7 @@
 from random import randint
 import parser
 import lexicon
+
 # generic endings
 class Endings(object):
 
@@ -39,6 +40,7 @@ class Engine(object):
         return self.paths.get(get_path, None)
 
     def handle_scene(self, user_input):
+        user_input = user_input.strip()
         if " " not in user_input:
             get_path  = self.action_paths.get(user_input, "game over")
             return get_path

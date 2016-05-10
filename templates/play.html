@@ -2,6 +2,7 @@
 {%- block content %}
     <section class="content">
         <h2 class="scene-name">{{scene.name}}</h2>
+        {% if scene.name == "study" %}
         <pre class="scene-description">{{scene.description}}</pre>
 
         {% if scene.name == "game over" %}

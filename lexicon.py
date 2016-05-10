@@ -8,7 +8,7 @@ word_dict['verb'] = {'go', 'eat', 'kill', 'run', 'take', 'seduce', 'torture',
                      'strangle', 'sneak', 'start'}
 word_dict['stop'] = {'the', 'in', 'of', 'out', 'and', 'to', 'yes', 'no'}
 word_dict['direction'] = {'north', 'south', 'east', 'west', 'up', 'down',
-                          'left', 'right'}
+                          'left', 'right', 'back'}
 word_dict['negatives'] = {'not', 'dont', "don't"}
 
 
@@ -30,7 +30,6 @@ def scan(sentence):
                 break
         else:
             split_sentence.append(handle_unknown(word))
-
     return split_sentence
 
 
