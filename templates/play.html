@@ -1,27 +1,30 @@
 {% extends "home.html" %}
 {%- block content %}
     <section class="content">
-        <h2 class="scene-name">{{scene.name}}</h2>
-        {% if scene.name == "study" %}
-        <pre class="scene-description">{{scene.description}}</pre>
-
-        {% if scene.name == "game over" %}
-            <p><a href="{{ url_for('home_page')}}">play again</a></p>
+        {% if scene.name == "the end winner" %}
+            <h2 class="scene-name">{{scene.name}}</h2>
+            <pre class="scene-description">{{scene.description}}</pre>
         {% else %}
-            <div class="error-messages">
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            <p>{{ message }}</p>
-                        {% endfor %}
-                    {% endif %}
-                {% endwith %}
-            </div>
-            <div class="form-action">
-                <form action="/play" method="POST">
-                    <input type="text" name="action"> <input type="submit" value="action">
-                </form>
-            </div>
+            <h2 class="scene-name">{{scene.name}}</h2>
+            <pre class="scene-description">{{scene.description}}</pre>
+            {% if scene.name == "game over" %}
+                <p><a href="{{ url_for('home_page')}}">play again</a></p>
+            {% else %}
+                <div class="error-messages">
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            {% for message in messages %}
+                                <p>{{ message }}</p>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                <div class="form-action">
+                    <form action="/play" method="POST">
+                        <input type="text" name="action" placeholder="action" required> <input type="submit" value="action">
+                    </form>
+                </div>
+            {% endif %}
         {% endif %}
     </section>
 {%- endblock content %}
