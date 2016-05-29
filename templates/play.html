@@ -5,27 +5,26 @@
 {%- endblock head %}
 {%- block content %}
 
+{% macro game_scene_output() -%}
+    <div class="scene">
+        <h2 class="scene-name">{{scene.name}}</h2>
+        <pre class="scene-description">{{scene.description}}</pre>
+    </div>
+{%- endmacro %}
+
     <section class="content">
         {% if scene.name == "the end winner" %}
-            <div class="scene">
-                <h2 class="scene-name">{{scene.name}}</h2>
-                <pre class="scene-description">{{scene.description}}</pre>
-                <p><a href="{{ url_for('home_page')}}">play again</a></p>
-            </div>
+            {{ game_scene_output() }}
+
+            <p><a href="{{ url_for('home_page')}}">play again</a></p>
 
         {% elif scene.name == "game over" %}
-            <div class="scene">
-                <h2 class="scene-name">{{scene.name}}</h2>
-                <pre class="scene-description">{{scene.description}}</pre>
-            </div>
+            {{ game_scene_output() }}
 
             <p><a href="{{ url_for('home_page')}}">play again</a></p>
 
         {% else %}
-            <div class="scene">
-                <h2 class="scene-name">{{scene.name}}</h2>
-                <pre class="scene-description">{{scene.description}}</pre>
-            </div>
+            {{ game_scene_output() }}
 
             <div class="error-messages">
                 {% with messages = get_flashed_messages() %}
