@@ -63,16 +63,17 @@ class Scene(object):
 the_pit = Scene('the pit',
 """
 MISSION BRIEFING:
-hello agent T-19...this is Diana, it seems we're in need of your skills!
+hello agent T-19, this is Diana, we're in need of your skills!
 
-*infiltrate the webster Mansion, they have a social function tonight and
- i'v prepared a cover for you...
-*find and secure a disk (ATLANTIS-virus)
+    *infiltrate the webster Mansion.
+    *find and secure a disk (ATLANTIS-virus)
+
+    they have a social function tonight i'v prepared a cover for you
 
 our client would like this to be as clean as possible so don't leave a mess!,
 we don't RIO all over again do we...see you soon!!!
 
-tools: lock-pick, flash-drive, tight-rope...
+    tools: lock-pick, flash-drive, tight-rope...
 
 you arrive with your envoy at the main entrance but the door is only as far as
 you can go...
@@ -99,6 +100,7 @@ with this disguise you sneak in the kitchen...steam soaring, stove hissing and
 everybody passing around, they hardly notice you at all...you go about
 inspecting each and every corner of the room you then notice familiar room,
 the cold room! suddenly you get an idea...
+
 a few minutes later you emerge out og the cold room as Josh, the a waiter!
 just then the head Chef takes a load on you, pointing and telling you where you
 should be, he then gives you an order, its for a VIP at the master bedroom
@@ -113,24 +115,25 @@ the_lounge = Scene('the lounge',
 you pose as a steward, with special interest at the main table you serve them
 wine, listening in to their conversation one thing that caught your attention:
 
-Webster: (with a cigar in his hand) I'm telling you she is a beauty, I took
-         her for a runthe other day...it was fenominal
-Cage: (hahaha..) that's what you said about Dinah...now look at what trouble
-      she's gotten you into...(all laughing)
+    Webster: (with a cigar in his hand) I'm telling you she is a beauty, I took
+             her for a runthe other day...it was fenominal
+    Cage: (hahaha..) that's what you said about Dinah...now look at what trouble
+          she's gotten you into...(all laughing)
 
 deep in your thoughts:
 {find Dinah, she must know one or two of his secrets}
 you then go to the elevator...there is a guard there:
 
-Guard: hey you cant go up there..
-You: Oh special order for Mrs Webster..
-Guard: which Mrs Webster?
-You: the, boss's escort, look i don't get paid a lot and i need this job so
-     unless you want both of us loosing our jobs...!
-Guard: oh we don't want that do we, go on...master bedroom,
+    Guard: hey you cant go up there..
+    You: Oh special order for Mrs Webster..
+    Guard: which Mrs Webster?
+    You: the, boss's escort, look i don't get paid a lot and i need this job so
+         unless you want both of us loosing our jobs!
+    Guard: oh we don't want that do we, go on.
 
-you are now in the elevator, check time:
-...2105hrs... hm!!! not bad but time is running out...
+you are now in the elevator,
+check time: 2105hrs
+hm!!! not bad but time is running out.
 
 
 where do you want to go now???
@@ -168,7 +171,7 @@ generic_end = Scene('game over', Endings().random_death())
 
 the_end_winner = Scene('the end winner',
 """
-yes you have the keys...now get outa here before they find you...
+yes you have the keys of the Ferrari now get outa here before they find you...
 """)
 
 
@@ -210,6 +213,8 @@ game_engine.add_action_paths({
 'player sneak back': 'kitchen',
 'player go kitchen': 'kitchen',
 'yes': 'bedroom',
+'study': 'study',
+'bedroom': 'bedroom',
 'no': 'lounge',
 'player torture her': 'study',
 'player seduce her': 'study',
